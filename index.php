@@ -4,6 +4,8 @@
 	<title> NBA TIMES </title>
 	<meta charset="UTF-8"/>
 	<link rel="stylesheet" href="estilos/estilo.css"/>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Glory">
 </head>
 <body>
 	<?php
@@ -25,7 +27,7 @@
 							$t = thumb($reg->imagem);
 							
 							echo "<tr><td><img src='$t'class='mini'/>";
-							echo "<td><a href='jogadores.php?id_clube=$reg->id_clube'>$reg->nome_clube</a>"; 
+							echo "<td><a class='list_jogadores' href='jogadores.php?id_clube=$reg->id_clube'>$reg->nome_clube</a>"; 
 							
 							echo "<td>Adm";
 						}
