@@ -12,7 +12,9 @@
 		require_once "includes/funcoes.php";
 	?>
 	<div id="corpo">
-		<?php
+		<?php 
+			include_once "topo.php";
+		
 			$idc = $_GET ['id_clube']?? 0;
 			$busca = $banco->query("select * from jogadores j, clubes c where c.id_clube='$idc' and j.clube_atual='$idc' order by j.nome_jogador ");	
 				
@@ -49,7 +51,8 @@
 				}								
 			?>
 		</table>
-		
+	</div>	
+	<?php include_once "rodape.php";?>
 
 </body>
 </html>

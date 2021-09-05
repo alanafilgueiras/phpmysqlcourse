@@ -13,7 +13,11 @@
 		require_once "includes/funcoes.php";
 	?>
 	<div id="corpo">
+		<?php require_once "topo.php";?>
 		<h1>ESCOLHA UM TIME</h1>
+		<form method="get" id="busca" action"index.php">
+		Ordenar: Nome | Time | Buscar: <input type="text" name="c" size="10" maxlength="40"/> <input type="submit" value="ok"/>
+		</form>
 		<table class= "listagem">
 			<?php
 				$busca = $banco->query("select * from clubes order by nome_clube ");
@@ -36,7 +40,7 @@
 			?>
 		</table>
 		
-		
-	<?php $banco->close();?>
+	</div>	
+	<?php include_once "rodape.php"; ?>
 </body>
 </html>
