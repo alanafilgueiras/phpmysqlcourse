@@ -11,7 +11,7 @@
 	<?php
 		require_once "includes/banco.php";
 		require_once "includes/funcoes.php";
-		$ordem = $_GET['o'] ?? "n";
+		$ordem = $_GET['o'] ?? "i";
 	?>
 	<div id="corpo">
 		<?php require_once "topo.php";?>
@@ -38,14 +38,31 @@
 							$t = thumb($reg->imagem);
 							echo "<table>";
 							echo "<tr><td><img src='$t'class='mini'/></td><td style='padding: 15px'><a class='list_jogadores' href='jogadores.php?id_clube=$reg->id_clube'>$reg->nome_clube</a></td></tr>";
-							$busca_jogadores = $banco->query("select nome_jogador from jogadores where clube_atual = $reg->id_clube");
+							$jogadores = "select nome_jogador from jogadores where clube_atual = $reg->id_clube ";
+							switch ($ordem){
+								case "n";
+									$jogadores .= "ORDER BY nome_jogador";
+									break; 
+								case "a";
+									$jogadores .= "ORDER BY altura DESC";
+									break;
+								case "i";
+									$jogadores .= "ORDER BY idade";
+									break;
+								default:
+									$jogadores .= "ORDER BY idade";
+									break;
 
+							}
+							$busca_jogadores = $banco->query($jogadores);
+							
+						
 							while ($reg_busca_jogadores=$busca_jogadores->fetch_object()){
 	
 								echo "<tr><td style='color:black;'><a class='list_jogadores'>$reg_busca_jogadores->nome_jogador</a> </td></tr>";
 
 							}
-							echo "</table>";
+							echo "</table> ";
 						}
 					}
 				}
